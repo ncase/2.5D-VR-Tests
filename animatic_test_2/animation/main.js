@@ -20,16 +20,12 @@ var vrmgr = new WebVRManager(effect);
 // CONVERT TO 2.5D SCENE
 //////////////////////////////////////////////////////
 
+var sprites = [];
+
 var loader = new createjs.LoadQueue(false);
 loader.installPlugin(createjs.Sound);
 loader.addEventListener("complete", handleComplete);
-loader.loadManifest([
-	{src:"animation/sounds/hoot.mp3", id:"hoot"}
-]);
-
 createjs.Sound.alternateExtensions = ["ogg"];
-
-var sprites = [];
 
 function handleComplete() {
 
@@ -131,7 +127,7 @@ function playSFX(id, mc) {
 	var soundObject = { mc:mc, soundInstance:soundInstance };
 
 	soundObjects.push(soundObject);
-	soundInstance.on("complete", function(){
+	soundInstance.addEventListener("complete", function(){
 		var i = soundObjects.indexOf(soundObject);
 		if(i<0) return;
 		soundObjects.splice(i,1);
@@ -207,4 +203,18 @@ stats.domElement.style.position = 'absolute';
 stats.domElement.style.left = '0px';
 stats.domElement.style.top = '0px';
 document.body.appendChild( stats.domElement );
+
+
+
+//////////////////////////////////////////////////////
+// HERE'S YOUR LOADER
+//////////////////////////////////////////////////////
+
+window.onload = function(){
+
+	loader.loadManifest([
+		{src:"animation/sounds/hoot.mp3", id:"hoot"}
+	]);
+
+};
 
