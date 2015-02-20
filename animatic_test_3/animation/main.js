@@ -29,7 +29,7 @@ createjs.Sound.alternateExtensions = ["ogg"];
 
 function handleComplete() {
 
-	root = new lib.animatic_canvas();
+	root = new lib.act_i();
 	root.isSprite = true;
 
 	stage = new createjs.Stage();
@@ -47,6 +47,10 @@ function handleComplete() {
 		sprites.push(sprite);
 	}
 
+	// ANIMATE
+	root.stop();
+	window.musicInstance = createjs.Sound.play("intro");
+	//root.play();
 	animate();
 
 }
@@ -147,9 +151,10 @@ function animate() {
 
 	stats.begin();
 
-	// Animate CreateJS - p.s. 30 FPS looks weird
-    stage._tick();
-    sortSprites(scene.children);
+	// Animate CreateJS
+	var frame = Math.floor((window.musicInstance.getPosition()/1000)*30);
+	root.gotoAndStop(frame);
+	sortSprites(scene.children);
     for(var i=0;i<sprites.length;i++){
     	sprites[i].draw();
     }
@@ -213,7 +218,7 @@ document.body.appendChild( stats.domElement );
 window.onload = function(){
 
 	loader.loadManifest([
-		{src:"animation/sounds/hoot.mp3", id:"hoot"}
+		{src:"animation/music/intro.mp3", id:"intro"}
 	]);
 
 };

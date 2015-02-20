@@ -23,20 +23,23 @@ function CanvasSprite(mc){
 	// SCALE
 	self.resolution = 5;
 
-	// create a canvas element
-	self.canvas = document.createElement('canvas');
-	self.canvas.width = self.bounds.width * self.resolution;
-	self.canvas.height = self.bounds.height * self.resolution;
-	self.context = self.canvas.getContext('2d');
-
 	// Cache & config
     self.drawn = false;
     if(self.mc.frame_0){
     	self.mc.frame_0.call(self);
     }
+
+	// create a canvas element
+	var w = self.bounds.width;
+	var h = (self.floor) ? self.bounds.height : Math.abs(self.bounds.y);
+	self.canvas = document.createElement('canvas');
+	self.canvas.width = w * self.resolution;
+	self.canvas.height = h * self.resolution;
+	self.context = self.canvas.getContext('2d');
     
 	// Create a texture that uses a canvas
 	self.texture = new THREE.Texture(self.canvas) 
+	self.texture.minFilter = THREE.LinearFilter;
 	self.texture.needsUpdate = true;
 
 	// Transparent material
@@ -45,25 +48,27 @@ function CanvasSprite(mc){
     self.material.depthWrite = false;
 
     // Geometry & mesh - pivot point should be origin point in MC.
-    self.geometry = new THREE.PlaneGeometry(self.bounds.width, self.bounds.height);
-    self.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-self.bounds.width/2,-self.bounds.height/2,0));
+    self.geometry = new THREE.PlaneBufferGeometry(w,h);
+    self.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-w/2,-h/2,0));
     self.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(-self.bounds.x,-self.bounds.y,0));
     self.mesh = new THREE.Mesh(self.geometry, self.material);
     self.mesh.canvasSprite = self;
 
-    // Floor?
-    if(self.floor){
-    	var depthIndex = self.mc.parent.getChildIndex(self.mc)/self.mc.parent.getNumChildren();
-    	self.y = -1+depthIndex;
-    }
-
 	self.draw = function(){
+
+		// Visible?
+		if(self.mc.parent){
+			self.material.visible = true;			
+		}else{
+			self.material.visible = false;
+			return;
+		}
 
 		// Redraw? (Cache by default)
 		if(!self.drawn || self.isAnimated){
 			var ctx = self.context;
 			ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-			//ctx.fillStyle = "#cc2727"
+			//ctx.fillStyle = "rgba(200,0,0,0.5)";
 			//ctx.fillRect(0,0,ctx.canvas.width,ctx.canvas.height);
 			ctx.save();
 			ctx.scale(self.resolution,self.resolution);
@@ -74,6 +79,15 @@ function CanvasSprite(mc){
 			self.texture.needsUpdate = true;
 			self.drawn = true;
 		}
+
+		// Floor?
+	    if(self.floor){
+	    	var depthIndex = self.mc.parent.getChildIndex(self.mc)/self.mc.parent.getNumChildren();
+	    	self.y = -1+depthIndex;
+	    }else{
+	    	self.y = 0;//-(self.bounds.height+self.bounds.y)/2;
+	    	// TOTAL HACK. GOOD ENOUGH ESTIMATE. DUNNO, FIGURE OUT LATER
+	    }
 
 		// Translate to ThreeJS coords.
 		self.x = self.mc.x - root._stage.x;

@@ -176,7 +176,7 @@ lib.properties = {
 	this._stage.setTransform(250,400);
 	this._stage.alpha = 0.5;
 
-	this.timeline.addTween(cjs.Tween.get(this._stage).wait(120));
+	this.timeline.addTween(cjs.Tween.get(this._stage).to({y:380},30,cjs.Ease.get(-1)).to({y:360},30,cjs.Ease.get(1)).to({y:380.4},30,cjs.Ease.get(-1)).to({y:400},29,cjs.Ease.get(1)).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(78,448.5,836.3,553.3);
