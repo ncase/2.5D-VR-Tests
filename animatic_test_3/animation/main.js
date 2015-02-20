@@ -48,9 +48,8 @@ function handleComplete() {
 	}
 
 	// ANIMATE
-	root.stop();
+	//root.gotoAndStop(362);
 	window.musicInstance = createjs.Sound.play("intro");
-	//root.play();
 	animate();
 
 }
@@ -152,8 +151,10 @@ function animate() {
 	stats.begin();
 
 	// Animate CreateJS
-	var frame = Math.floor((window.musicInstance.getPosition()/1000)*30);
-	root.gotoAndStop(frame);
+	if(window.musicInstance){
+		var frame = Math.floor((window.musicInstance.getPosition()/1000)*30);
+		root.gotoAndStop(frame);
+	}
 	sortSprites(scene.children);
     for(var i=0;i<sprites.length;i++){
     	sprites[i].draw();
