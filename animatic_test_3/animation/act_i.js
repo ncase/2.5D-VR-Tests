@@ -59,13 +59,13 @@ lib.properties = {
 
 	// stage
 	this._stage = new lib.stage();
-	this._stage.setTransform(250,400);
+	this._stage.setTransform(250,450);
 	this._stage.alpha = 0.5;
 
 	this.timeline.addTween(cjs.Tween.get(this._stage).wait(800));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(282.6,399,434.8,468.4);
+p.nominalBounds = new cjs.Rectangle(282.6,399,434.8,518.4);
 
 
 // symbols:
@@ -98,8 +98,7 @@ p.nominalBounds = new cjs.Rectangle(-217.4,-217.4,434.8,434.8);
 
 	// Layer 3
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f().s("rgba(255,0,255,0)").ss(1,1,1).p("Ao+o+IR9AAIAAR9Ix9AAg");
-	this.shape.setTransform(0,0,0.87,0.87);
+	this.shape.graphics.f().s("rgba(255,0,255,0)").ss(1,1,1).p("AnznzIPnAAIAAPnIvnAAg");
 
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
