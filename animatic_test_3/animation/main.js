@@ -10,7 +10,7 @@ renderer.sortObjects = false;
 document.body.appendChild(renderer.domElement);
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
-camera.position.y = 40;
+camera.position.y = 75;
 var controls = new THREE.VRControls(camera);
 var effect = new THREE.VREffect(renderer);
 effect.setSize(window.innerWidth, window.innerHeight);
@@ -29,7 +29,7 @@ createjs.Sound.alternateExtensions = ["ogg"];
 
 function handleComplete() {
 
-	root = new lib.act_i();
+	root = new lib.act_i_canvas();
 	root.isSprite = true;
 
 	stage = new createjs.Stage();
@@ -48,8 +48,14 @@ function handleComplete() {
 	}
 
 	// ANIMATE
-	//root.gotoAndStop(362);
-	window.musicInstance = createjs.Sound.play("intro");
+	createjs.Ticker.setPaused(true);
+	//root.gotoAndStop(1000);
+	window.musicInstance = createjs.Sound.play("intro",{
+		//offset:30000
+	});
+	window.musicInstance.addEventListener("complete", function(){
+		window.ANIMATION_OVER = true;
+	});
 	animate();
 
 }
@@ -151,7 +157,7 @@ function animate() {
 	stats.begin();
 
 	// Animate CreateJS
-	if(window.musicInstance){
+	if(!window.ANIMATION_OVER && window.musicInstance){
 		var frame = Math.floor((window.musicInstance.getPosition()/1000)*30);
 		root.gotoAndStop(frame);
 	}
@@ -170,11 +176,12 @@ function animate() {
 	controls.update();
 
 	// Render the scene through the VREffect, but only if it's in VR mode.
-	if(vrmgr.isVRMode()) {
+	/*if(vrmgr.isVRMode()) {
 		effect.render(scene, camera);
 	} else {
 		renderer.render(scene, camera);
-	}
+	}*/
+	effect.render(scene, camera);
 
 	// End
 	stats.end();
@@ -219,7 +226,7 @@ document.body.appendChild( stats.domElement );
 window.onload = function(){
 
 	loader.loadManifest([
-		{src:"animation/music/intro.mp3", id:"intro"}
+		{src:"animation/music/intro_cut.mp3", id:"intro"}
 	]);
 
 };
