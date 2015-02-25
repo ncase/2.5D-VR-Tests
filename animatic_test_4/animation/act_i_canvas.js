@@ -21,9 +21,104 @@ lib.properties = {
 			setBackground(0x000000);
 		}
 	}
+	this.frame_1433 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1434 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1435 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1436 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1437 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1438 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1439 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1440 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1441 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1442 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1443 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1444 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1445 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1446 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1447 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1448 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1449 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1450 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
+	this.frame_1451 = function() {
+		if(this.isSprite){
+			setBackground(0x000000);
+		}
+	}
 
 	// actions tween:
-	this.timeline.addTween(cjs.Tween.get(this).wait(1432).call(this.frame_1432).wait(333));
+	this.timeline.addTween(cjs.Tween.get(this).wait(1432).call(this.frame_1432).wait(1).call(this.frame_1433).wait(1).call(this.frame_1434).wait(1).call(this.frame_1435).wait(1).call(this.frame_1436).wait(1).call(this.frame_1437).wait(1).call(this.frame_1438).wait(1).call(this.frame_1439).wait(1).call(this.frame_1440).wait(1).call(this.frame_1441).wait(1).call(this.frame_1442).wait(1).call(this.frame_1443).wait(1).call(this.frame_1444).wait(1).call(this.frame_1445).wait(1).call(this.frame_1446).wait(1).call(this.frame_1447).wait(1).call(this.frame_1448).wait(1).call(this.frame_1449).wait(1).call(this.frame_1450).wait(1).call(this.frame_1451).wait(314));
 
 	// Layer 28
 	this.instance = new lib.iamink("synched",0);
@@ -32,7 +127,7 @@ lib.properties = {
 	this.instance_1 = new lib.iamink_end("synched",0);
 	this.instance_1.setTransform(250,300);
 
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[]},51).to({state:[]},1381).to({state:[{t:this.instance_1}]},28).to({state:[]},270).wait(35));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[]},51).to({state:[]},1381).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[]},1).to({state:[{t:this.instance_1}]},8).to({state:[]},270).wait(35));
 
 	// Layer 3
 	this.instance_2 = new lib.crash_2("synched",0);
@@ -288,10 +383,10 @@ lib.properties = {
 
 	// Layer 42
 	this.instance_49 = new lib.tree("synched",0,false);
-	this.instance_49.setTransform(348.9,270.7);
+	this.instance_49.setTransform(348.9,280.7);
 
 	this.instance_50 = new lib.tree_still("single",0);
-	this.instance_50.setTransform(348.9,270.7);
+	this.instance_50.setTransform(348.9,280.7);
 
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[]}).to({state:[{t:this.instance_49}]},986).to({state:[{t:this.instance_50}]},53).to({state:[]},393).wait(333));
 

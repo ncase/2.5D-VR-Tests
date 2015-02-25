@@ -25,7 +25,7 @@ var sprites = [];
 var loader = new createjs.LoadQueue(false);
 loader.installPlugin(createjs.Sound);
 loader.addEventListener("complete", handleComplete);
-createjs.Sound.alternateExtensions = ["ogg"];
+//createjs.Sound.alternateExtensions = ["ogg"];
 
 function handleComplete() {
 
@@ -52,10 +52,15 @@ function handleComplete() {
 	window.musicInstance = createjs.Sound.play("intro",{
 		//offset:30000
 	});
+	window.musicInstance.pause();
 	window.musicInstance.addEventListener("complete", function(){
 		window.ANIMATION_OVER = true;
 	});
-	animate();
+	
+	setTimeout(function(){
+		window.musicInstance.play();
+		animate();
+	},100);
 
 }
 
